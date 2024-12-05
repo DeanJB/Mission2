@@ -1,0 +1,136 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.img {
+    position: center;
+}
+.eye-spy-area {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 0px;
+    text-align: center;
+    background: radial-gradient(
+        circle,
+        #ffc100,
+        #ffa900,
+        #ff9000,
+        #ff7400,
+        #ff5500,
+        #fe4402,
+        #fd2e07,
+        #fb000c,
+        #fc0013,
+        #fd0019,
+        #fe001e,
+        #ff0023
+    );
+}
+
+.button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.button:disabled {
+    background: rgb(0, 0, 0);
+}
+
+.game-area {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: flex;
+    align-items: center;
+}
+
+.still-image {
+    width: 0px;
+    height: 0px;
+    visibility: hidden;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+    position: center;
+    gap: 10px;
+}
+
+.player-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+#playerGuess {
+    padding: 12px 12px;
+    font-size: 16px;
+    margin-top: 30px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+#game-image {
+    max-width: 100%;
+    max-height: 100vh;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    border: 10px;
+}
+
+#userInput {
+    padding: 12px 12px;
+    font-size: 16px;
+    margin-top: 30px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0);
+    transition: box-shadow 0.3s ease-in-out;
+}
+#userInput:focus {
+    outline: none;
+    box-shadow: 0 0 6px 3px rgba(0, 0, 0, 0.8);
+}
+
+#playButton {
+    position: center;
+    padding: 12px 12px;
+    font-size: 38px;
+    margin-top: 10px;
+    margin-bottom: 500px;
+    background-color: whitesmoke;
+    color: black;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+/* countdown timer */
+#timerDisplay {
+    padding: 12px 12px;
+    width: 250px;
+    margin-top: 30px;
+    font-size: 16px;
+    color: #ffffff;
+    font-weight: bold;
+    border: 1px solid #ffffff;
+    border-radius: 40px;
+    background: radial-gradient(circle, #404040, #333333, #282828, #1d1d1d, #121212, #000000);
+    text-align: center;
+    box-shadow: 0 0 6px 3px rgb(255, 255, 255);
+}
