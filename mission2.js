@@ -15,7 +15,7 @@ const volumeControl = document.getElementById("volumeControl");
 const playButtonTimer = document.getElementById("playButton");
 const timerDisplay = document.getElementById("timerDisplay");
 
-backgroundAudio.volume = 0.1;
+backgroundAudio.volume = 0.4;
 
 // Must add timer(done), score(not done),
 
