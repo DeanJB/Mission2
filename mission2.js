@@ -5,6 +5,10 @@ const images = [
 ];
 
 let currentIndex = 0;
+let score = 0;
+let basePoints = 500;
+let bonusPoints = 0;
+let levelTimeLeft = 0;
 
 const playButton = document.getElementById("playButton");
 const gameImage = document.getElementById("game-image");
@@ -14,10 +18,12 @@ const backgroundAudio = document.getElementById("background-ambiant");
 const volumeControl = document.getElementById("volumeControl");
 const playButtonTimer = document.getElementById("playButton");
 const timerDisplay = document.getElementById("timerDisplay");
+const scoreDisplay = document.getElementById("scoreDisplay");
+const gameOverAudio = document.getElementById("gameOverAudio");
 
-backgroundAudio.volume = 0.4;
+backgroundAudio.volume = 0.1;
 
-// Must add timer(done), score(not done),
+// Must add timer(done), score(done),
 
 function startGame() {
     if (currentIndex < images.length) {
@@ -28,17 +34,24 @@ function startGame() {
         userInput.style.visibility = "visible";
         submitGuess.style.visibility = "visible";
         timerDisplay.style.visibility = "visible";
+        scoreDisplay.style.visibility = "visible";
         userInput.value = " ";
         userInput.disabled = false;
         submitGuess.disabled = false;
         playButton.textContent = "Next Level";
         playButton.disabled = true;
+
+        countdown = 120;
+        startTimer();
     } else {
         playButton.textContent = "Restart";
         playButton.disabled = false;
         userInput.disabled = true;
         submitGuess.disabled = true;
         currentIndex = 0;
+
+        score = 0;
+        updateScore();
     }
 }
 
@@ -54,10 +67,24 @@ function checkGuess() {
         userInput.disabled = true;
         submitGuess.disabled = true;
         playButton.disabled = false;
+        endLevel();
     } else {
         const incorrectSound = document.getElementById("incorrectGuess");
         incorrectSound.currentTime = 0;
         incorrectSound.play();
+    }
+}
+
+function updateScore() {
+    if (scoreDisplay) {
+        scoreDisplay.innerHTML = `Score: ${score}`;
+    }
+}
+
+function updateScoreDisplay(score) {
+    if (scoreDisplay) {
+        console.log("Updating score to:", score);
+        scoreDisplay.innerHTML = `Score: ${score}`;
     }
 }
 // Timer
@@ -89,9 +116,28 @@ function startTimer() {
 }
 function playLoseAudio() {
     const gameOverAudio = document.getElementById("gameOverAudio");
+
     if (gameOverAudio) {
         gameOverAudio.play();
     }
+}
+
+function endLevel() {
+    levelTimeLeft = countdown;
+
+    if (levelTimeLeft >= 60) {
+        bonusPoints = 500;
+    } else if (levelTimeLeft >= 30) {
+        bonusPoints = 250;
+    } else if (levelTimeLeft >= 10) {
+        bonusPoints = 50;
+    } else {
+        bonusPoints = 0;
+    }
+
+    score += basePoints + bonusPoints;
+
+    updateScore();
 }
 
 playButton.addEventListener("click", startGame);
